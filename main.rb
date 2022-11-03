@@ -1,3 +1,8 @@
+require_relative 'code_generator.rb'
+require_relative 'colorizer.rb'
+require_relative 'display.rb'
+require_relative 'game.rb'
+
 puts <<-HEREDOC 
 
 How to play Mastermind:
@@ -43,12 +48,10 @@ HEREDOC
 # Press '1' to be the code MAKER
 # Press '2' to be the code BREAKER
 
+#Things I need:
+# 1) A game class
+# 2) A code generator class
+# 3) A colorizing class 
+# 4) A display class?
 
-def code_generator
-  code = []
-  4.times do 
-    code.push(rand(1..6))
-  end
-end
-
-code_generator
+Game.new.play_game
