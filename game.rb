@@ -48,13 +48,21 @@ class Game
   def clues 
     clue = ''
     guess_array = @guess.digits.reverse
+    code_array = @code.clone
     # code = [6, 5, 2, 2]
-    # guess = [6, 5, 2, 1]
+    # guess = [2, 2, 2, 1]
     @code.each_with_index do |e, i|
       if guess_array[i] == e
         clue += '● '
-      elsif guess_array[i] != e && @code.include?(guess_array[i])
+        code_array.delete(guess_array[i])
+      end
+    end
+    @code.each_with_index do |e, i|
+      if guess_array[i] == e
+        next
+      elsif guess_array[i] != e && code_array.include?(guess_array[i])
         clue += '○ '
+        code_array.delete(guess_array[i])
       end
     end
     clue
