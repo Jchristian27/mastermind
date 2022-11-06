@@ -1,4 +1,5 @@
 require_relative 'code_generator.rb'
+require_relative 'computer_game.rb'
 require_relative 'game.rb'
 
 puts <<-HEREDOC 
@@ -51,4 +52,8 @@ until answer == 1 || answer == 2
   answer = gets.chomp.to_i
 end
 
-Game.new.play_game
+if answer == 1
+  ComputerGame.new.play_game
+else 
+  Game.new.play_game
+end

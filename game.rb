@@ -3,6 +3,7 @@ class Game
     @code = CodeGenerator.new.code
     @round = 1
     @guess = nil
+    puts "The computer has set the 'master code' and now it's time for you to break the code.\n\n"
   end
 
   def game_over?
