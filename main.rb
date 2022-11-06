@@ -1,6 +1,4 @@
 require_relative 'code_generator.rb'
-require_relative 'colorizer.rb'
-require_relative 'display.rb'
 require_relative 'game.rb'
 
 puts <<-HEREDOC 
@@ -43,15 +41,14 @@ It's time to play!
 
 HEREDOC
 
-# Would you like to be the code MAKER or code BREAKER?
+puts 'Would you like to be the code MAKER or code BREAKER?'
 
-# Press '1' to be the code MAKER
-# Press '2' to be the code BREAKER
-
-#Things I need:
-# 1) A game class
-# 2) A code generator class
-# 3) A colorizing class 
-# 4) A display class?
+puts "Press '1' to be the code MAKER"
+puts "Press '2' to be the code BREAKER"
+answer = gets.chomp.to_i
+until answer == 1 || answer == 2
+  puts "Sorry, you must enter either '1' or '2'. Please try again."
+  answer = gets.chomp.to_i
+end
 
 Game.new.play_game
