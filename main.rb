@@ -10,7 +10,7 @@ How to play Mastermind:
 This is a 1-player game against the computer.
 You can choose to be the code maker or the code breaker.
 
-There are six different number/color combinations:
+There are six different numbers that can be used:
 
   1     2     3     4     5     6   
 
@@ -19,7 +19,7 @@ The code maker will choose four to create a 'master code'. For example,
 
   1     3     4     1   
 
-As you can see, there can be more then one of the same number/color.
+As you can see, there can be more then one of the same number.
 In order to win, the code breaker needs to guess the 'master code' in 12 or less turns.
 
 
