@@ -59,7 +59,7 @@ class Game
     end
     clue.split("").sort.reverse.join(" ")
   end
-
+  
   def play_game
     until game_over? == true
       player_turn

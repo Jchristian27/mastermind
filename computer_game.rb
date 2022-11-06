@@ -27,7 +27,7 @@ class ComputerGame
     master_array.each_with_index do |e, i|
       if @computer_guess[i] == e
         clue += '● '
-      elsif master_array.include?(@computer_guess[i])
+      elsif @computer_guess.include?(master_array[i])
         clue += '○ '
       end
     end
