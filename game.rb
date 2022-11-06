@@ -9,20 +9,20 @@ class Game
     if @guess == @code.join("").to_i
       puts <<-HEREDOC
 
-      You broke the code! Congratulations, you win!
-      The code was:
+      \rYou broke the code! Congratulations, you win!
+      \rThe code was:
 
-      #{@code[0]}       #{@code[1]}       #{@code[2]}       #{@code[3]}
+      \r#{@code[0]}       #{@code[1]}       #{@code[2]}       #{@code[3]}
 
       HEREDOC
       return true
     elsif @round == 13
       puts <<-HEREDOC
       
-      Game over. That was a hard code to break! ¯\\_(ツ)_/¯
-      Here is the 'master code' that you were trying to break:
+      \rGame over. That was a hard code to break! ¯\\_(ツ)_/¯
+      \rHere is the 'master code' that you were trying to break:
       
-      #{@code[0]}       #{@code[1]}       #{@code[2]}       #{@code[3]}
+      \r#{@code[0]}       #{@code[1]}       #{@code[2]}       #{@code[3]}
 
       HEREDOC
       return true
@@ -47,30 +47,15 @@ class Game
 
   def clues 
     clue = ''
-    # clue_array = []
     guess_array = @guess.digits.reverse
-    # code_array = @code.clone
-    # code = [6, 5, 2, 2]
-    # code_array = [6, 5, 2, 2]
-    # guess = [2, 2, 2, 1]
+
     @code.each_with_index do |e, i|
       if guess_array[i] == e
         clue += '● '
-        # clue_array.push('● ')
-        # code_array.delete(guess_array[i])
       elsif guess_array.include?(@code[i])
         clue += '○ '
-        # clue_array.push('○ ')
-        # code_array.delete(guess_array[i])
       end
     end
-    # @code.each_with_index do |e, i|
-    #   if guess_array[i] != e && @code.include?(guess_array[i]) && code_array.include?(guess_array[i])
-    #     clue += '○ '
-    #     code_array.delete(guess_array[i])
-    #   end
-    # end
-    # clue_array.sort.reverse.to_s
     clue.split("").sort.reverse.join(" ")
   end
 
