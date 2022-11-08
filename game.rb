@@ -49,15 +49,12 @@ class Game
   def clues 
     clue = ''
     guess_array = @guess.digits.reverse
-    placeholder_array = guess_array.clone
     
     @code.each_with_index do |e, i|
       if guess_array[i] == e
         clue += '● '
-        #placeholder_array.delete(@code[i])
-      elsif guess_array.include?(@code[i]) #&& placeholder_array.include?(@code[i])
+      elsif guess_array.include?(@code[i])
         clue += '○ '
-        #placeholder_array.delete(@code[i])
       end
     end
     clue.split("").sort.reverse.join(" ")
