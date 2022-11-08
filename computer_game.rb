@@ -2,8 +2,8 @@ class ComputerGame
   def initialize 
     puts "Please enter a 4-digit 'master code' for the computer to break."
     answer = gets.chomp.to_s
-    until answer.length == 4 && answer.to_i > 0
-      puts "Sorry, you must enter a 4 digit number to continue. Please try again."
+    until answer.length == 4 && answer.split("").map(&:to_i).all? { |num| num.between?(1,6)}
+      puts "Sorry, your code must be a combination of 4 digits from 1-6. Please, try again."
       answer = gets.chomp.to_s
     end
     @round = 1
@@ -47,6 +47,7 @@ class ComputerGame
   def play_game
     until game_over? == true
       computer_turn
+      sleep(1.5)
     end
   end
 end

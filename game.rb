@@ -33,8 +33,8 @@ class Game
   def player_turn
     puts "Turn ##{@round}: Type in four numbers (1-6) to guess the code."
     @guess = gets.chomp.to_i
-    until @guess.digits.length == 4
-      puts "Sorry, your code must be 4 digits long. Please, try again."
+    until @guess.digits.length == 4 && @guess.digits.map(&:to_i).all? { |num| num.between?(1,6)}
+      puts "Sorry, your code must be a combination of 4 digits from 1-6. Please, try again."
       @guess = gets.chomp.to_i
     end
     display_code(@guess)
@@ -49,12 +49,15 @@ class Game
   def clues 
     clue = ''
     guess_array = @guess.digits.reverse
-
+    placeholder_array = guess_array.clone
+    
     @code.each_with_index do |e, i|
       if guess_array[i] == e
         clue += '● '
-      elsif guess_array.include?(@code[i])
+        #placeholder_array.delete(@code[i])
+      elsif guess_array.include?(@code[i]) #&& placeholder_array.include?(@code[i])
         clue += '○ '
+        #placeholder_array.delete(@code[i])
       end
     end
     clue.split("").sort.reverse.join(" ")
